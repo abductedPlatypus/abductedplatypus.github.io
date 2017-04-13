@@ -13,21 +13,18 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Abducted Website
+title: Abducted Platypus
 email: abductedPlatypus@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  This set of pages contains tools made by and insights sighted by game designer and interaction sciencer abductedPlatypus
+  This page contains entertainment, weird tools, sequences of characters and sciency stuff made by abductedPlatypus.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://abductedplatypus.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitch: abductedPlatypus
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: abductypus
 github_username:  abductedPlatypus
-itch.io abductedPlatypus
-
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-slate
+theme: minima
 gems:
   - jekyll-feed
 exclude:

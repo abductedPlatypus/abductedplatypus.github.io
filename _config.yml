@@ -27,7 +27,7 @@ itch.io abductedPlatypus
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-slate
+theme: jekyll-theme-minimal
 gems:
   - jekyll-feed
 exclude:

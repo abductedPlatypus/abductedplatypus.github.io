@@ -18,14 +18,19 @@ email: abductedPlatypus@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   This page contains entertainment, weird tools, sequences of characters and sciency stuff made by abductedPlatypus.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://abductedplatypus.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: abductypus
-github_username:  abductedPlatypus
+github_username: abductedPlatypus
+itchio_username: abductedPlatypus
+twitch_username: abductedPlatypus
 
 # Build settings
 markdown: kramdown
 
-theme: minima
+#plugins
+google_analytics: UA-97398429-1
+
+# theme: minima
 
 gems:
   - jekyll-feed

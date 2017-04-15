@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="This page contains entertainment, weird tools, sequences of characters and sciency stuff made by abductedPlatypus.">
+  <title>Dithering in Photoshop</title>
+  <meta name="description" content="I recently release a set of Dither Brushes for Photoshop CS5 (and probably higher). It is frowned upon in the pixel art community to use tools when making pi...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2017/04/14/dither-brushes.html">
   <link rel="alternate" type="application/rss+xml" title="Abducted Platypus" href="/feed.xml">
   
   
@@ -60,25 +60,77 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">Dithering in Photoshop</h1>
+    <p class="post-meta"><time datetime="2017-04-14T21:35:00+02:00" itemprop="datePublished">Apr 14, 2017</time></p>
   </header>
 
-  <div class="post-content">
-    <p>I am a game designer from the Netherlands, in addition I stream development on Twitch. I aim to release most of the stuff I make on GitHub, as long as it is financially viable for me. If I find the time I will write papers to accompany the stuff I make and to explain the stuff I do more formally.</p>
+  <div class="post-content" itemprop="articleBody">
+    <p>I recently release a set of <a href="https://abductedPlatypus.itch.io/dither-brushes">Dither Brushes</a> for Photoshop CS5 (and probably higher). It is <a href="http://pixeljoint.com/forum/forum_posts.asp?TID=11299&amp;PID=139318#139318">frowned upon</a> in the pixel art community to use tools when making pixel art, since at its core this community finds a challenge in placing every pixel seperately and purposely. They make perfect drawing within a grid and often with a limited color set. So why did I make this set publicly available, and what are my <a href="#recommendations">recommendations</a> for using it? 
+To answer this I will answer the following first:</p>
+<ul>
+  <li><a href="#what-is-dithering">What is Dithering?</a></li>
+  <li><a href="#how-does-dithering-in-the-tool-work">How does dithering in the tool work?</a></li>
+  <li><a href="#what-kind-of-problems-will-i-encounter-with-this-tool">What kind of problems will I encounter with this tool?</a></li>
+</ul>
 
-<p>Since my 12th I made custom maps and assets for games like Age of Empirtes/Mythology, Portal 2 and Team Fortress 2, some of which were made ‘official’, later during university I learnt programming and made successful games in several Ludum Dare. and was lucky enough to have some of my interactive installations on display only meters from know modern artist like Banksy and  Damien Hirst.</p>
+<h1 id="what-is-dithering">What is Dithering?</h1>
+<p>Dithering is a technique used to make gradients in pixel art. While it is possible to use a wider range of colors, in pixel art is is often chosen to use a limited set. It uses a pattern of alternating colors to “mix” two (but rarely more than two) colors together. There are different patterns that can be used, each with a different “density” and style.</p>
 
-<p>I call these personal successes, which is defined as <code class="highlighter-rouge">timeEnjoyedByOthers - timeBuildByMe &gt; 0</code></p>
+<p>Often two similar colors are used to create a color that is in between, but sometimes a grey is used to desaturate a color or red and yellow are mixed to make an orange. First color A than a mix of A and B until only color B remains. Such gradients can be very large, often it is only and area of a few pixels. This technique is widely used in shading art, but in more limited color sets (for older hardware) entire art pieces can consist of dithered areas.</p>
 
-<p>I also ran two companies, I did some design and implementation freelance work for several international and multinationals, and travel through Europe. Both of which I think were both personal and financial successful.</p>
+<blockquote>
+  <p>Example Image of dithering gradient<br />
+Example Image of dithering character</p>
+</blockquote>
 
-<p>Right now I am looking for creative opportunities and doing things purely for fun, while wrapping up my studies.</p>
+<p>Nowadays the main reason for using it is for aestatic reasons. A nice talk on this kind of graphics, including dithering, is by <a href="https://www.youtube.com/watch?v=aMcJ1Jvtef0">Mark Ferrari</a>, who worked on a lot of 80’s classics like The Secret of Monkey Island. And no, he doesn’t understand why there are still people that want to make pixel art. But he does acknowledge the fact that such limitations make you very creative.</p>
+
+<h1 id="how-does-dithering-in-the-tool-work">How does dithering in the tool work?</h1>
+<p>So now that we have a little insight in what Dither is lets talk about how the tool works.</p>
+
+<p>First I made 8 different 4 by 4 pixel patterns, of 2 colored pixels each, making it a pattern of <code class="highlighter-rouge">2/(4*4)=0.125</code> density. Each of the patterns was designed exactly to make it possible to combine them to make more dense patterns out of it. I named these patterns O, and A through G.</p>
+
+<blockquote>
+  <p>Image of all OABDCDEFG patterns and how they combine.</p>
+</blockquote>
+
+<p>I used these patterns as textures applied to Photoshop Brushes using multiply mode.</p>
+
+<p>Took some thinking time, but it was pretty easy. Even making a touch sensitve version of the brush was simply using different greys to set the right threshold.</p>
+
+<h1 id="what-kind-of-problems-will-i-encounter-with-this-tool">What kind of problems will I encounter with this tool?</h1>
+<p>First of all the pattern found for 0.250 density is not perfect, although it is a widely used pattern, it does “reveal the grid” (has a very recognizable pattern). Therefor I introduced two seperate patterns that can be used instead. However each of these patterns do not line up either vertically or horizontally, placing two pixels of the same color directly next to eachother, breaking the smoothness of the gradient.</p>
+<blockquote>
+  <p>Image of the two alternative brushes</p>
+</blockquote>
+
+<p>It should also be noted that there is only one pattern, while the pattern an be shifted both up and down 3 more times effectively leaving 15 patterns behind that can not be used in the current set. These patterns can be recreated using the O, A… G brushes in a different order.</p>
+
+<h1 id="recommendations">Recommendations</h1>
+<p>Experiment! That’s the best way of knowing what you can do with these brushes. But I will give you some general advice.</p>
+
+<ul>
+  <li>Don’t use the brushes right away, only use them if you need to dither large areas.</li>
+  <li>Decide which color will be drawn as background and which color you will use in your foreground and keep to that for your entire object. If you don’t you will come in situations where you are drawing the same color as both background and background, which removes the dither effect.</li>
+  <li>If your object’s grid doesn’t line up with an object behind it consider moving the pattern you drew a few pixels, or use several of the primitive 2-pixel brushes to fix it. This will take some work, but make sure your object doesn’t blend together with whatever is behind it.</li>
+  <li>Zoom out often to see if you are not doing something that takes a lot of time to fix.</li>
+</ul>
+
+<p>To help you out I disabled spacing, to force users to use the brush in a calm fashion, in hopes force people to use it more presicely.</p>
+
+<p>Even with all the downsides that follow from what is considered “good” pixel art, I still think this brush can be really helpful. I personally like them, and I feel that when you keep the limitations in mind it will help you make good pixel art quicker.</p>
+
+<p>In the end you should always retouch your dithers with a nice 1 pixel pencil to make everything look perfect. That is, if you are not a a Game Jam schedule.</p>
+
+<iframe frameborder="0" src="https://itch.io/embed/133494?linkback=true" width="552" height="167"></iframe>
+
 
   </div>
 
+  
 </article>
 
       </div>

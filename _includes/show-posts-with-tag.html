@@ -1,0 +1,17 @@
+<div>
+{% if include.tag %}
+    {% if site.tags contains include.tag %}
+    <ul>
+        <b>{{include.title}}</b> <br>
+        {% for post in site.posts %}
+            {% if post.tags contains include.tag %}
+            <p>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+                <span class="date">{{ post.date | date: "%B %-d, %Y"  }}</span>
+            </p>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endif %}
+</div>

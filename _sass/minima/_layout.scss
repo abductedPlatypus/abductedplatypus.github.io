@@ -157,6 +157,20 @@
   }
 }
 
+.copyright{
+  margin-top:5em;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size:0.8em;
+  font-weight:200;
+  .apa,
+  .donate,
+  .license{
+    margin:0.5em;
+    background: $grey-color-light;
+  }
+}
+
 
 
 /**

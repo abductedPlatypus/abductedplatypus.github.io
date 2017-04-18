@@ -4,9 +4,16 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
-  
   {{ content }}
+
+  <h1 class="page-heading">Featured Project</h1>
+{% include card-itchio.html id=133494%}
+{% include show-posts-with-tag.html title="Posts about dither brushes:" tag="dither-brushes" %}
+
+
+
+
+  <h1 class="page-heading">Recent Posts</h1>
 
   <ul class="post-list">
     {% for post in site.posts %}

@@ -16,7 +16,7 @@
 title: Abducted Platypus
 email: abductedPlatypus@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  This page contains entertainment, weird tools, sequences of characters and sciency stuff made by abductedPlatypus.
+  The place for all your abductedPlatypus entertainment, weird tools, sequences of characters and sciency stuff.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://abductedplatypus.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: abductypus
@@ -28,7 +28,7 @@ twitch_username: abductedPlatypus
 markdown: kramdown
 
 #plugins
-google_analytics: UA-97398429-1
+
 
 # theme: minima
 

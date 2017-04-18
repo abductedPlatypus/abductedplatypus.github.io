@@ -50,7 +50,53 @@
         <p>{{ site.description | escape }}</p>
       </div>
     </div>
-
+    <div class="copyright">
+      <div class="apa">
+        Cite (APA): {% if site.author %}
+              <span>{{ site.author | escape }}.</span>
+            {% else %}
+              <span>{{ site.title | escape }}.</span>
+            {% endif %} 
+            {% if page.date %} 
+              <span>({{ page.date | date: "%Y, %B %d" }}).</span>
+            {% else %} 
+              <span>({{ site.time | date: "%Y, %B %d" }}).</span>
+            {% endif %}
+            {% if page.title %}
+             <span>{{page.title}}.</span>
+            {% else %}
+             <span>{{site.title}}.</span>
+            {% endif %}
+            <span>Retrieved <span class="apanow"></span>, from {{site.url}}{{page.id}}<span>
+      </div>
+    <div class="license"> 
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+      </a>
+      Unless explicitly mentioned otherwise, everything found at 
+      <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">{{site.url}} </span>
+       is licensed under a just add '<a xmlns:cc="http://creativecommons.org/ns#" href="{{ site.url }}" property="cc:attributionName" rel="cc:attributionURL">abductedPlatypus</a>' to credits license: <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        Creative Commons Attribution 4.0 International License
+        </a>.
+    </div>
+    <div class="donate">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="RGB93JHUH5TDS">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"> <span> 
+      </form>
+      <span> If you love any content made by me or use it in a commercially successful product, consider donating through that ugly button, so I can make more stuff for the community.</span>
+    </div>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var date = new Date();
+          var months = ["January","February","March","April","May","June","July",	"August","September","October","November","December"];
+          var val = months[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
+          document.querySelectorAll(".apanow").forEach(function(ele){ele.innerText= val});
+        });
+      </script>
+      </div>
   </div>
-
 </footer>

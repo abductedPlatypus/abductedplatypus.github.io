@@ -2,26 +2,36 @@
 layout: post
 title:  "Dithering in Photoshop"
 date:   2017-04-14 21:35:00 +0200
-categories: jekyll update
+categories: [tools]
+tags: [art, pixel-art, dithering, photoshop, brushes, dither-brushes]
 ---
-I recently release a set of [Dither Brushes][dither-brushes] for Photoshop CS5 (and probably higher). It is [frowned upon][frowned-upon-tools] in the pixel art community to use tools when making pixel art, since at its core this community finds a challenge in placing every pixel seperately and purposely. They make perfect drawing within a grid and often with a limited color set. So why did I make this set publicly available, and what are my [recommendations](#recommendations) for using it? 
-To answer this I will answer the following first:
+I recently released a set of [Dither Brushes][dither-brushes] for Photoshop (CS5 and probably higher). However it is [frowned upon][frowned-upon-tools] in the pixel art community to use tools when making pixel art, since the community finds a challenge in placing every pixel seperately and purposely. They make the perfect drawing within a grid and often with a limited color set. So why did I still develop a tool and make this set publicly available, and what are my [recommendations](#recommendations) for using it? 
+To be answer this I will answer the following first:
 * [What is Dithering?](#what-is-dithering)
 * [How does dithering in the tool work?](#how-does-dithering-in-the-tool-work)
 * [What kind of problems will I encounter with this tool?](#what-kind-of-problems-will-i-encounter-with-this-tool)
 
 # What is Dithering?
-Dithering is a technique used to make gradients in pixel art. While it is possible to use a wider range of colors, in pixel art is is often chosen to use a limited set. It uses a pattern of alternating colors to "mix" two (but rarely more than two) colors together. There are different patterns that can be used, each with a different "density" and style. 
+Dithering is a technique used to make gradients and different teints of similar colors in pixel art, without using a wide scala of actual colors. It uses a pattern of alternating colors to "mix" two (but rarely more than two) colors together, tricking the human eye into believing that they actually perceive a third color. There are different patterns that can be used, each with a different "density" and style. A similar technique has been used in some pop art that utilised Ben Day dots. And in fact this technique is still used in modern printing; CMYK uses halftone dot patterns and LCD screens; each pixel is created from a red, green and blue subpixel. Tricking the human eye is always great.
 
-Often two similar colors are used to create a color that is in between, but sometimes a grey is used to desaturate a color or red and yellow are mixed to make an orange. First color A than a mix of A and B until only color B remains. Such gradients can be very large, often it is only and area of a few pixels. This technique is widely used in shading art, but in more limited color sets (for older hardware) entire art pieces can consist of dithered areas.
+{% include image-captioned.html 
+    float="right"
+    image="/assets/images/drowning-girl.jpg" 
+    alt="Pop Art with Ben Day dots." caption="Pop Art with Ben Day dots, zoomed in you can clearly see the the dots, zoomed out you see pinkish skin color; Close up of 'Drowning Girl' by Roy Lichtenstein (1963)" 
+    source="Picture: Tim Pendemon, Close up: Matt Grommes" %}
 
->Example Image of dithering gradient  
->Example Image of dithering character
+Often two similar colors are used to create a color that is in between the two, but sometimes a grey is used to desaturate and brighten/darken a color or red and yellow are mixed to make an orange. First color A than a mix of A and B until only color B remains. Such gradients can be very large but often it is only an area of a few pixels. This technique is widely used in shading art, but in more limited color sets (for older hardware) entire art pieces can consist of dithered areas.
 
 Nowadays the main reason for using it is for aestatic reasons. A nice talk on this kind of graphics, including dithering, is by [Mark Ferrari][mark-ferrari], who worked on a lot of 80's classics like The Secret of Monkey Island. And no, he doesn't understand why there are still people that want to make pixel art. But he does acknowledge the fact that such limitations make you very creative.
 
-# How does dithering in the tool work?
-So now that we have a little insight in what Dither is lets talk about how the tool works.
+{% include image-captioned.html 
+    float="left"
+    image="/assets/images/dither-example.png" 
+    alt="Example Dithering" caption="Dithering in a gradient and usage in character." 
+    source="Character by Cure" %}
+
+# How does dithering work in the tool?
+So now that we have a little insight in what dithering is lets talk about how the tool works.
 
 First I made 8 different 4 by 4 pixel patterns, of 2 colored pixels each, making it a pattern of `2/(4*4)=0.125` density. Each of the patterns was designed exactly to make it possible to combine them to make more dense patterns out of it. I named these patterns O, and A through G.
 
@@ -29,13 +39,21 @@ First I made 8 different 4 by 4 pixel patterns, of 2 colored pixels each, making
 
 I used these patterns as textures applied to Photoshop Brushes using multiply mode.
 
-Took some thinking time, but it was pretty easy. Even making a touch sensitve version of the brush was simply using different greys to set the right threshold.
+Took some thinking time, but in the end it was pretty easy. 
+Even making a pressure sensitve version of the brush was simply using different greys to set the right threshold. The touch sensite version uses the pressure to enable O when it only barely touches, adds A when a bit more pressure is applied, until we finally try to put scratches on the tablet with the pen and G is added to make a fully filled "pattern". In its current implementation this is done linearly, so based on your input settings the checkboard pattern will be what is put out when regular pressure is applied.
 
 # What kind of problems will I encounter with this tool?
-First of all the pattern found for 0.250 density is not perfect, although it is a widely used pattern, it does "reveal the grid" (has a very recognizable pattern). Therefor I introduced two seperate patterns that can be used instead. However each of these patterns do not line up either vertically or horizontally, placing two pixels of the same color directly next to eachother, breaking the smoothness of the gradient.
+First of all the pattern found for 0.250 density is not perfect, although it is a widely used pattern, it does "reveal the grid" (has a very recognizable pattern). Therefore I introduced two seperate patterns that can be used instead. However each of these patterns do not line up either vertically or horizontally, placing two pixels of the same color directly next to eachother, breaking the smoothness of the gradient.
 >Image of the two alternative brushes
 
-It should also be noted that there is only one pattern, while the pattern an be shifted both up and down 3 more times effectively leaving 15 patterns behind that can not be used in the current set. These patterns can be recreated using the O, A... G brushes in a different order.
+It should also be noted that there is only one pattern, while the pattern can be shifted both up and down 3 more times effectively leaving 15 patterns behind that can not be used in the current set. These patterns can be recreated using the O, A... G brushes in a different order.
+
+Finally you should really know what you are doing and have some feeling on what the dither will look like when zoomed out.
+
+{% include image-captioned.html 
+    float="right"
+    image="/assets/images/alt-brushes.png" 
+    alt="Alternative brushes for 25% fill." caption="Problems you might encounter (and should know about) when using the 25% brushes." %}
 
 # Recommendations
 Experiment! That's the best way of knowing what you can do with these brushes. But I will give you some general advice.
@@ -44,6 +62,7 @@ Experiment! That's the best way of knowing what you can do with these brushes. B
 * Decide which color will be drawn as background and which color you will use in your foreground and keep to that for your entire object. If you don't you will come in situations where you are drawing the same color as both background and background, which removes the dither effect.
 * If your object's grid doesn't line up with an object behind it consider moving the pattern you drew a few pixels, or use several of the primitive 2-pixel brushes to fix it. This will take some work, but make sure your object doesn't blend together with whatever is behind it.
 * Zoom out often to see if you are not doing something that takes a lot of time to fix.
+* While idealistic, I would love to see more HD pixel art, and to make such a thing feasable I think we need tools like that.
 
 To help you out I disabled spacing, to force users to use the brush in a calm fashion, in hopes force people to use it more presicely.
 
@@ -51,9 +70,15 @@ Even with all the downsides that follow from what is considered "good" pixel art
 
 In the end you should always retouch your dithers with a nice 1 pixel pencil to make everything look perfect. That is, if you are not a a Game Jam schedule.
 
+### Alternatives
+If you have a 15 bucks to spare you could also go and buy [aseprite][aseprite], which includes similar tools for dithering, and a whole lot of other features. However, personally I don't like the flow of using it. (I will try it again in the near future) I do like [PyxelEdit][pyxeledit] though, mainly because it was designed to feel like Photoshop (but has better backup support in case it crashes). I use it to create the outline and initial colors, then I do some dithering (mainly shading), anti-aliasing and sometimes selective outlining (I only use selout if I go for a cartoony look, and need to increase the contrast between background and foreground - nope, I'm not a fan.) in Photoshop and then back to PyxelEdit for sprite sheets and animations. If you are unsure about any terms, I like [this pixel art tutorial][pixel-art-tutorial] a lot.
+
 
 {% include card-itchio.html id=133494 %}  
 
 [dither-brushes]: https://abductedPlatypus.itch.io/dither-brushes
 [frowned-upon-tools]: http://pixeljoint.com/forum/forum_posts.asp?TID=11299&PID=139318#139318
 [mark-ferrari]:https://www.youtube.com/watch?v=aMcJ1Jvtef0
+[aseprite]:https://www.asesprite.org
+[pyxeledit]:https://www.pyxeledit.com
+[pixel-art-tutorial]:http://pixeljoint.com/forum/forum_posts.asp?TID=11299

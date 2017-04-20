@@ -28,6 +28,8 @@ twitch_username: abductedPlatypus
 markdown: kramdown
 
 #plugins
+google_analytics: UA-97398429-1
+
 
 
 # theme: minima

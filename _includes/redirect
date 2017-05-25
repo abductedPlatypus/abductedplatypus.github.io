@@ -1,0 +1,5 @@
+        <script type="text/javascript">
+            window.location.href = "{{ include.link }}"
+        </script>
+        
+        <span class="redirect"> Redirecting you to {{ include.name }}.<br><br>If you are not redirected automatically, follow this <a href="{{ include.link }}">link</a>.</span>

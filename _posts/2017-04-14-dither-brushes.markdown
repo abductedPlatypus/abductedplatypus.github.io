@@ -55,9 +55,9 @@ Finally you should really know what you are doing and have some feeling on what 
 # Recommendations
 Experiment! That's the best way of knowing what you can do with these brushes. But I will give you some general advice.
 
-* Don't use the brushes right away, only use them if you need to dither large areas.
-* Decide which color will be drawn as background and which color you will use in your foreground and keep to that for your entire object. If you don't you will come in situations where you are drawing the same color as both background and background, which removes the dither effect.
-* If your object's grid doesn't line up with an object behind it consider moving the pattern you drew a few pixels, or use several of the primitive 2-pixel brushes to fix it. This will take some work, but make sure your object doesn't blend together with whatever is behind it.
+* Don't use the brushes right away, only use them if you need to dither large areas. That way you will keep some precision.
+* Decide which color will be drawn as background and which color you will use in your foreground and keep to that for your entire object. If you don't you might get into situations where you are drawing the same color as both foreground and background, removing the dither effect.
+* If your object's grid doesn't line up with an object behind it consider moving the pattern you drew a few pixels, or fix it with a regular brush. This will take some work, but make sure your object doesn't blend together with whatever is behind it.
 * Zoom out often to see if you are not doing something that takes a lot of time to fix.
 * While idealistic, I would love to see more HD pixel art, and to make such a thing feasable I think we need tools like that.
 

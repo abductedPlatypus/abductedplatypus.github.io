@@ -35,8 +35,6 @@ So now that we have a little insight in what dithering is lets talk about how th
 
 First I made 8 different 4 by 4 pixel patterns, of 2 colored pixels each, making it a pattern of `2/(4*4)=0.125` density. Each of the patterns was designed exactly to make it possible to combine them to make more dense patterns out of it. I named these patterns O, and A through G.
 
->Image of all OABDCDEFG patterns and how they combine.
-
 I used these patterns as textures applied to Photoshop Brushes using multiply mode.
 
 Took some thinking time, but in the end it was pretty easy. 
@@ -44,7 +42,6 @@ Even making a pressure sensitive version of the brush was simply using different
 
 # What kind of problems will I encounter with this tool?
 First of all the pattern found for 0.250 density is not perfect, although it is a widely used pattern, it does "reveal the grid" (has a very recognizable pattern). Therefore I introduced two seperate patterns that can be used instead. However each of these patterns do not line up either vertically or horizontally, placing two pixels of the same color directly next to eachother, breaking the smoothness of the gradient.
->Image of the two alternative brushes
 
 It should also be noted that there is only one pattern, while the pattern can be shifted both up and down 3 more times effectively leaving 15 patterns behind that can not be used in the current set. These patterns can be recreated using the O, A... G brushes in a different order. If you are OK with using blending modes, you can also uset the pattern stamp tool, with aligned turned of to apply the dithering with other configurations.
 

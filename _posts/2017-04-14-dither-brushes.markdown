@@ -8,7 +8,7 @@ tags: [art, pixel-art, dithering, photoshop, brushes, dither-brushes]
 I recently released a set of [Dither Brushes][dither-brushes] for Photoshop (CS5 and probably higher). However it is [frowned upon][frowned-upon-tools] in the pixel art community to use tools when making pixel art, since the community finds a challenge in placing every pixel seperately and purposely. They make the perfect drawing within a grid and often with a limited color set. So why did I still develop a tool and make this set publicly available, and what are my [recommendations](#recommendations) for using it? 
 To be answer this I will answer the following first:
 * [What is Dithering?](#what-is-dithering)
-* [How does dithering in the tool work?](#how-does-dithering-in-the-tool-work)
+* [How does dithering work with the brushes?](#how-does-dithering-work-with-the-brushes)
 * [What kind of problems will I encounter with this tool?](#what-kind-of-problems-will-i-encounter-with-this-tool)
 
 # What is Dithering?
@@ -30,7 +30,7 @@ Nowadays the main reason for using it is for aestatic reasons. A nice talk on th
     alt="Example Dithering" caption="Dithering in a gradient and usage in character." 
     source="Character by Cure" %}
 
-# How does dithering work in the tool?
+# How does dithering work with the brushes?
 So now that we have a little insight in what dithering is lets talk about how the tool works.
 
 First I made 8 different 4 by 4 pixel patterns, of 2 colored pixels each, making it a pattern of `2/(4*4)=0.125` density. Each of the patterns was designed exactly to make it possible to combine them to make more dense patterns out of it. I named these patterns O, and A through G.
@@ -40,13 +40,13 @@ First I made 8 different 4 by 4 pixel patterns, of 2 colored pixels each, making
 I used these patterns as textures applied to Photoshop Brushes using multiply mode.
 
 Took some thinking time, but in the end it was pretty easy. 
-Even making a pressure sensitve version of the brush was simply using different greys to set the right threshold. The touch sensite version uses the pressure to enable O when it only barely touches, adds A when a bit more pressure is applied, until we finally try to put scratches on the tablet with the pen and G is added to make a fully filled "pattern". In its current implementation this is done linearly, so based on your input settings the checkboard pattern will be what is put out when regular pressure is applied.
+Even making a pressure sensitive version of the brush was simply using different greys to set the right threshold. The touch sensite version uses the pressure to enable O when it only barely touches, adds A when a bit more pressure is applied, until we finally try to put scratches on the tablet with the pen and G is added to make a fully filled "pattern". In its current implementation this is done linearly, so based on your input settings the checkboard pattern will be what is put out when regular pressure is applied.
 
 # What kind of problems will I encounter with this tool?
 First of all the pattern found for 0.250 density is not perfect, although it is a widely used pattern, it does "reveal the grid" (has a very recognizable pattern). Therefore I introduced two seperate patterns that can be used instead. However each of these patterns do not line up either vertically or horizontally, placing two pixels of the same color directly next to eachother, breaking the smoothness of the gradient.
 >Image of the two alternative brushes
 
-It should also be noted that there is only one pattern, while the pattern can be shifted both up and down 3 more times effectively leaving 15 patterns behind that can not be used in the current set. These patterns can be recreated using the O, A... G brushes in a different order.
+It should also be noted that there is only one pattern, while the pattern can be shifted both up and down 3 more times effectively leaving 15 patterns behind that can not be used in the current set. These patterns can be recreated using the O, A... G brushes in a different order. If you are OK with using blending modes, you can also uset the pattern stamp tool, with aligned turned of to apply the dithering with other configurations.
 
 Finally you should really know what you are doing and have some feeling on what the dither will look like when zoomed out.
 

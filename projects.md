@@ -5,7 +5,9 @@ permalink: /projects/
 ---
 
 {% include card-itchio.html id=133494%}
-{% include show-posts-with-tag.html title="Posts about dither brushes:" tag="dither-brushes" %}
+{% include card-itchio.html id=565786%}
+
+[comment]:# ({% include show-posts-with-tag.html title="Posts about dither brushes:" tag="dither-brushes" %})
   
 
   

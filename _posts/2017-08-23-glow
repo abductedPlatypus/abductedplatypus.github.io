@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "GLOW"
+date:   2017-08-23 20:21:00 +0200
+categories: [games]
+tags: [game, unity, 2d, ludum-dare, game-jam]
+---
+For Ludum Dare 39, with the theme "Running Out of Power", I made a 2D game in Unity.
+
+Both the source and the game are available on [itch.io](#play-it-here)
+
+{% include card-itchio.html id=133494 %}  
+
+[play-it-here]: https://abductedPlatypus.itch.io/glow
